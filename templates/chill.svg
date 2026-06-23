@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <!-- Gradiente oceano profondo e calmo -->
+    <linearGradient id="ocean-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#071b2d" />
+      <stop offset="60%" stop-color="#030d17" />
+      <stop offset="100%" stop-color="#01050a" />
+    </linearGradient>
+
+    <linearGradient id="hull-upper" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d323f" />
+      <stop offset="100%" stop-color="#1b1d24" />
+    </linearGradient>
+
+    <linearGradient id="hull-lower" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a83232" />
+      <stop offset="100%" stop-color="#6e1e1e" />
+    </linearGradient>
+
+    <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    /* Beccheggio ancora più lento (stato chill) */
+    @keyframes submarine-drift {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-4px) rotate(-0.3deg); }
+    }
+    .sub-group {
+      animation: submarine-drift 8s infinite ease-in-out;
+      transform-origin: 300px 200px;
+    }
+
+    /* Note musicali che salgono e svaniscono (Inno di bordo) */
+    @keyframes note-rise {
+      0% { transform: translate(0, 0) scale(0.6) rotate(0deg); opacity: 0; }
+      15% { opacity: 0.8; }
+      50% { transform: translate(-20px, -40px) scale(1) rotate(-10deg); opacity: 0.6; }
+      80% { transform: translate(-35px, -80px) scale(0.9) rotate(10deg); opacity: 0.2; }
+      100% { transform: translate(-45px, -110px) scale(0.6) rotate(0deg); opacity: 0; }
+    }
+    .music-note {
+      fill: #ffdf7a;
+      animation: note-rise 4.5s infinite linear;
+      filter: url(#neon-glow);
+    }
+    .n-1 { animation-delay: 0s; transform-origin: 350px 140px; }
+    .n-2 { animation-delay: 1.5s; transform-origin: 370px 145px; }
+    .n-3 { animation-delay: 3s; transform-origin: 330px 150px; }
+
+    /* Pesciolini calmi */
+    @keyframes fish-swim {
+      0% { transform: translate(600px, 100px) scaleX(1); }
+      49% { transform: translate(100px, 80px) scaleX(1); }
+      50% { transform: translate(100px, 80px) scaleX(-1); }
+      99% { transform: translate(600px, 100px) scaleX(-1); }
+      100% { transform: translate(600px, 100px) scaleX(1); }
+    }
+    .fish {
+      fill: #008ca3;
+      opacity: 0.3;
+      animation: fish-swim 25s infinite linear;
+    }
+
+    .sonar-text {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      fill: #00f0ff;
+      opacity: 0.7;
+      filter: url(#neon-glow);
+    }
+  </style>
+
+  <!-- Oceano Sfondo -->
+  <rect width="100%" height="100%" fill="url(#ocean-grad)" />
+
+  <!-- Pesciolini di sfondo -->
+  <path d="M 0 0 L 10 5 L 0 10 L 3 5 Z" class="fish" />
+  <path d="M 30 15 L 42 21 L 30 27 L 34 21 Z" class="fish" style="animation-delay: 5s; animation-duration: 20s;" />
+
+  <!-- Indicatori Sonar Passivo -->
+  <text x="20" y="30" class="sonar-text">RANGE: PASSIVE MONITORING</text>
+  <text x="20" y="45" class="sonar-text">PROPULSION: OFF / DRIFTING</text>
+  <text x="20" y="60" class="sonar-text">ACOUSTICS: HYMNS DETECTED (COLD/SOVIET)</text>
+
+  <!-- Griglia sonar passiva blu scuro -->
+  <circle cx="360" cy="200" r="150" fill="none" stroke="#00f0ff" stroke-width="0.15" opacity="0.1" />
+
+  <!-- Note Musicali Volanti (Salite dalla torretta del sottomarino) -->
+  <!-- Nota 1 (Croma) -->
+  <g class="music-note n-1" transform="translate(350, 100)">
+    <path d="M 10 15 A 4 3 0 1 1 6 12 L 14 3 L 14 10 M 14 5 L 20 8 L 20 13" stroke="#ffdf7a" stroke-width="1.5" fill="none" />
+  </g>
+  <!-- Nota 2 (Semiminima) -->
+  <g class="music-note n-2" transform="translate(390, 110)">
+    <ellipse cx="6" cy="12" rx="4" ry="3" />
+    <line x1="10" y1="12" x2="10" y2="2" stroke="#ffdf7a" stroke-width="1.5" />
+  </g>
+  <!-- Nota 3 (Croma doppia) -->
+  <g class="music-note n-3" transform="translate(310, 120)">
+    <ellipse cx="5" cy="12" rx="3.5" ry="2.5" />
+    <ellipse cx="15" cy="10" rx="3.5" ry="2.5" />
+    <line x1="8.5" y1="12" x2="8.5" y2="2" stroke="#ffdf7a" stroke-width="1.5" />
+    <line x1="18.5" y1="10" x2="18.5" y2="0" stroke="#ffdf7a" stroke-width="1.5" />
+    <polygon points="8.5,2 18.5,0 18.5,3 8.5,5" fill="#ffdf7a" />
+  </g>
+
+  <!-- Gruppo Sottomarino -->
+  <g class="sub-group">
+    <!-- Scafo Inferiore (Rosso) -->
+    <path d="M 120 210
+             C 120 232, 160 235, 180 235
+             H 440
+             C 455 235, 470 228, 470 220
+             V 210 Z" 
+          fill="url(#hull-lower)" />
+
+    <!-- Scafo Superiore (Nero Titanio) -->
+    <path d="M 105 210
+             C 105 195, 140 188, 170 188
+             H 445
+             C 460 188, 470 198, 470 210 Z" 
+          fill="url(#hull-upper)" />
+
+    <!-- Linee di pannello -->
+    <line x1="125" y1="210" x2="455" y2="210" stroke="#12141a" stroke-width="1.5" opacity="0.6" />
+    <rect x="140" y="198" width="12" height="4" rx="1" fill="#12141a" opacity="0.8" />
+    <rect x="160" y="198" width="12" height="4" rx="1" fill="#12141a" opacity="0.8" />
+
+    <!-- Torretta di comando -->
+    <path d="M 330 188
+             L 345 145
+             H 390
+             L 395 188 Z" 
+          fill="url(#hull-upper)" />
+    <!-- Dettagli Torretta -->
+    <path d="M 345 145 Q 365 140 390 145 Z" fill="#2d323f" stroke="#1b1d24" stroke-width="1" />
+    <rect x="355" y="152" width="6" height="3" fill="#12141a" />
+    <rect x="365" y="152" width="6" height="3" fill="#12141a" />
+    <rect x="375" y="152" width="6" height="3" fill="#12141a" />
+
+    <!-- Timone di coda verticale -->
+    <path d="M 445 188
+             L 460 155
+             H 472
+             L 470 210 Z" 
+          fill="url(#hull-upper)" />
+    <!-- Stabilizzatori posteriori -->
+    <path d="M 455 210 L 485 214 L 485 220 L 455 215 Z" fill="url(#hull-lower)" />
+
+    <!-- Tunnel del Caterpillar Drive (MHD spento / scuro) -->
+    <rect x="420" y="212" width="50" height="11" rx="3" fill="#0d0f13" stroke="#2d323f" stroke-width="1" />
+    <ellipse cx="470" cy="217" rx="3" ry="5.5" fill="#111" />
+
+    <!-- Il cappello da Capitano di Ramius posato sulla torretta -->
+    <g transform="translate(360, 131)">
+      <path d="M 2 13 L 26 13 L 24 15 L 4 15 Z" fill="#111" />
+      <path d="M 3 13 L 0 5 Q 14 1 28 5 L 25 13 Z" fill="#1a1c23" stroke="#111" stroke-width="0.75" />
+      <rect x="2.5" y="10" width="22" height="3" fill="#b01e1e" />
+      <circle cx="13.5" cy="7" r="2.5" fill="#ffd700" />
+      <circle cx="13.5" cy="7" r="1" fill="#ff0000" />
+    </g>
+  </g>
+</svg>

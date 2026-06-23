@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <!-- Gradiente cielo notturno -->
+    <linearGradient id="night-sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#050714" />
+      <stop offset="100%" stop-color="#11162d" />
+    </linearGradient>
+
+    <!-- Gradiente mare notturno oscuro -->
+    <linearGradient id="night-sea" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#090e24" />
+      <stop offset="100%" stop-color="#02040b" />
+    </linearGradient>
+
+    <!-- Sfumatura Luna Rossa (Red October Movie Theme) -->
+    <radialGradient id="red-moon-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff5555" />
+      <stop offset="70%" stop-color="#b82828" />
+      <stop offset="100%" stop-color="#540b0b" />
+    </radialGradient>
+
+    <!-- Bagliore della luna -->
+    <filter id="moon-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <linearGradient id="hull-upper" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d323f" />
+      <stop offset="100%" stop-color="#1b1d24" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    /* Oscillazione sottomarino sulle onde superficiali */
+    @keyframes surfaced-rock {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(3px) rotate(0.8deg); }
+    }
+    .sub-surfaced {
+      animation: surfaced-rock 5s infinite ease-in-out;
+      transform-origin: 300px 240px;
+    }
+
+    /* Stelle scintillanti */
+    @keyframes star-twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    .star {
+      fill: #ffffff;
+      animation: star-twinkle 3s infinite ease-in-out;
+    }
+    .star-2 { animation-delay: 1.5s; animation-duration: 2s; }
+
+    /* Onde superficiali animate */
+    @keyframes wave-drift {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-40px); }
+    }
+    .wave-line {
+      fill: none;
+      stroke: #1c2b5e;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      animation: wave-drift 4s infinite linear;
+    }
+
+    .sonar-text-night {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      fill: #ff5555;
+      opacity: 0.8;
+      filter: drop-shadow(0px 0px 2px #ff5555);
+    }
+  </style>
+
+  <!-- Cielo Notturno -->
+  <rect width="100%" height="240" fill="url(#night-sky)" />
+
+  <!-- Stelle -->
+  <circle cx="50" cy="40" r="1" class="star" />
+  <circle cx="120" cy="80" r="1.2" class="star star-2" />
+  <circle cx="280" cy="50" r="1" class="star" />
+  <circle cx="340" cy="90" r="1.5" class="star star-2" />
+  <circle cx="180" cy="110" r="1" class="star star-2" />
+  <circle cx="480" cy="60" r="1" class="star" />
+
+  <!-- Luna Rossa in alto a destra -->
+  <circle cx="500" cy="70" r="35" fill="url(#red-moon-grad)" filter="url(#moon-glow)" />
+
+  <!-- Mare Notturno (Sfondo basso) -->
+  <rect y="240" width="100%" height="160" fill="url(#night-sea)" />
+
+  <!-- Testo Logbook Militare -->
+  <text x="20" y="30" class="sonar-text-night">CAPTAIN'S LOG: RAMIUS ON DECK</text>
+  <text x="20" y="45" class="sonar-text-night">LOCATION: SEA SURFACE / MOONLIGHT RECON</text>
+  <text x="20" y="60" class="sonar-text-night">STATUS: SURFACED (NIGHT WATCH MODE)</text>
+
+  <!-- Gruppo Sottomarino Surfaced (Oscillante) -->
+  <g class="sub-surfaced">
+    <!-- Riflesso rosso della luna sullo scafo emerso -->
+    <ellipse cx="400" cy="225" rx="55" ry="3" fill="#ff5555" opacity="0.15" />
+
+    <!-- Scafo Superiore (Nero Titanio - visibile solo sopra la linea di galleggiamento a y=240) -->
+    <!-- Disegniamo lo scafo tagliato in basso -->
+    <path d="M 105 240
+             C 105 205, 140 188, 170 188
+             H 445
+             C 460 188, 470 198, 470 240 Z" 
+          fill="url(#hull-upper)" />
+
+    <!-- Linee scafo ed oblò -->
+    <line x1="125" y1="230" x2="455" y2="230" stroke="#12141a" stroke-width="1.5" opacity="0.6" />
+    <rect x="140" y="210" width="12" height="4" rx="1" fill="#12141a" opacity="0.8" />
+    <rect x="160" y="210" width="12" height="4" rx="1" fill="#12141a" opacity="0.8" />
+
+    <!-- Torretta di comando -->
+    <path d="M 330 240
+             L 345 145
+             H 390
+             L 395 240 Z" 
+          fill="url(#hull-upper)" />
+    <!-- Cupola Torretta -->
+    <path d="M 345 145 Q 365 140 390 145 Z" fill="#2d323f" stroke="#1b1d24" stroke-width="1" />
+    
+    <!-- Finestrini della torretta - accesi con luce calda gialla -->
+    <rect x="355" y="152" width="6" height="4" fill="#ffd54f" filter="drop-shadow(0px 0px 3px #ffd54f)" />
+    <rect x="365" y="152" width="6" height="4" fill="#ffd54f" filter="drop-shadow(0px 0px 3px #ffd54f)" />
+    <rect x="375" y="152" width="6" height="4" fill="#ffd54f" filter="drop-shadow(0px 0px 3px #ffd54f)" />
+
+    <!-- Timone di coda verticale (Rudder emerso) -->
+    <path d="M 445 240
+             L 460 155
+             H 472
+             L 470 240 Z" 
+          fill="url(#hull-upper)" />
+
+    <!-- Cappellino del Capitano Marko Ramius sulla torretta -->
+    <g transform="translate(360, 131)">
+      <path d="M 2 13 L 26 13 L 24 15 L 4 15 Z" fill="#111" />
+      <path d="M 3 13 L 0 5 Q 14 1 28 5 L 25 13 Z" fill="#1a1c23" stroke="#111" stroke-width="0.75" />
+      <rect x="2.5" y="10" width="22" height="3" fill="#b01e1e" />
+      <circle cx="13.5" cy="7" r="2.5" fill="#ffd700" />
+      <circle cx="13.5" cy="7" r="1" fill="#ff0000" />
+    </g>
+  </g>
+
+  <!-- Linea di Galleggiamento / Onde in primo piano -->
+  <g transform="translate(0, 240)">
+    <!-- Onde del mare che coprono parzialmente lo scafo a y=240 -->
+    <path d="M -40 0 Q -20 -4 0 0 T 40 0 T 80 0 T 120 0 T 160 0 T 200 0 T 240 0 T 280 0 T 320 0 T 360 0 T 400 0 T 440 0 T 480 0 T 520 0 T 560 0 T 600 0 L 600 20 L -40 20 Z" fill="url(#night-sea)" />
+    <!-- Onde animate decorative -->
+    <path d="M 0 5 Q 30 -2 60 5 T 120 5 T 180 5 T 240 5 T 300 5 T 360 5 T 420 5 T 480 5 T 540 5 T 600 5" class="wave-line" />
+    <path d="M -20 10 Q 20 6 50 10 T 110 10 T 170 10 T 230 10 T 290 10 T 350 10 T 410 10 T 470 10 T 530 10 T 590 10" class="wave-line" style="animation-delay: 2s; animation-duration: 5s;" />
+  </g>
+</svg>

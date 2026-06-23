@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <!-- Gradiente oceano rosso cupo d'emergenza -->
+    <linearGradient id="ocean-alert-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1c0505" />
+      <stop offset="50%" stop-color="#0d0202" />
+      <stop offset="100%" stop-color="#050000" />
+    </linearGradient>
+
+    <linearGradient id="hull-upper" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d323f" />
+      <stop offset="100%" stop-color="#1b1d24" />
+    </linearGradient>
+
+    <linearGradient id="hull-lower" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a83232" />
+      <stop offset="100%" stop-color="#6e1e1e" />
+    </linearGradient>
+
+    <!-- Bagliore arancione/rosso propulsore sovraccarico -->
+    <linearGradient id="alert-thrust-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff3c00" stop-opacity="1" />
+      <stop offset="40%" stop-color="#ff7b00" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#ffcc00" stop-opacity="0" />
+    </linearGradient>
+
+    <filter id="alert-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    /* Flash di sfondo rosso allarme */
+    @keyframes alert-bg-flash {
+      0%, 100% { fill: #0d0202; }
+      50% { fill: #2b0606; }
+    }
+    .alert-bg {
+      animation: alert-bg-flash 1.5s infinite ease-in-out;
+    }
+
+    /* Vibrazione sottomarino ad alta velocità */
+    @keyframes sub-shake {
+      0%, 100% { transform: translate(0, 0) rotate(-1.5deg); }
+      10% { transform: translate(-1.5px, -1px) rotate(-1.6deg); }
+      25% { transform: translate(1px, 1.5px) rotate(-1.4deg); }
+      40% { transform: translate(-1px, 1px) rotate(-1.5deg); }
+      55% { transform: translate(1.5px, -1px) rotate(-1.3deg); }
+      70% { transform: translate(-1px, 1.5px) rotate(-1.6deg); }
+      85% { transform: translate(1px, -1.5px) rotate(-1.4deg); }
+    }
+    .sub-group {
+      animation: sub-shake 0.12s infinite linear;
+      transform-origin: 300px 200px;
+    }
+
+    /* Sonar rosso frenetico */
+    @keyframes fast-sonar {
+      0% { r: 5; opacity: 1; stroke-width: 1.5; }
+      40% { opacity: 0.6; }
+      100% { r: 120; opacity: 0; stroke-width: 0.5; }
+    }
+    .sonar-ring-red {
+      fill: none;
+      stroke: #ff1100;
+      transform-origin: 105px 210px;
+      animation: fast-sonar 1.8s infinite cubic-bezier(0.1, 0.8, 0.3, 1);
+    }
+    .sonar-2 { animation-delay: 0.9s; }
+
+    /* Flusso reazione di coda sovralimentato */
+    @keyframes fire-thrust {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -40; }
+    }
+    .thrust-stream {
+      stroke: #ff5500;
+      stroke-width: 4.5;
+      stroke-linecap: round;
+      stroke-dasharray: 8 4 16 6;
+      animation: fire-thrust 0.8s infinite linear;
+      filter: url(#alert-glow);
+    }
+
+    /* Turbolenza accresciuta (bollicine) */
+    @keyframes bubble-rush {
+      0% { transform: translate(0, 0) scale(0.8); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.6; }
+      100% { transform: translate(150px, -60px) scale(1.3); opacity: 0; }
+    }
+    .bubble-fast {
+      fill: none;
+      stroke: #ff7b00;
+      stroke-width: 1;
+      opacity: 0;
+      animation: bubble-rush 1.5s infinite linear;
+    }
+    .bf-1 { animation-delay: 0s; }
+    .bf-2 { animation-delay: 0.3s; }
+    .bf-3 { animation-delay: 0.6s; }
+    .bf-4 { animation-delay: 0.9s; }
+    .bf-5 { animation-delay: 1.2s; }
+
+    /* Testo lampeggiante */
+    @keyframes text-blink {
+      0%, 100% { opacity: 0.9; }
+      50% { opacity: 0.3; }
+    }
+    .sonar-text-alert {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      fill: #ff1100;
+      font-weight: bold;
+      animation: text-blink 1s infinite steps(2);
+      filter: url(#alert-glow);
+    }
+  </style>
+
+  <!-- Oceano Sfondo Allarme -->
+  <rect width="100%" height="100%" fill="url(#ocean-alert-grad)" class="alert-bg" />
+
+  <!-- Indicatori Sonar Rosso Allarme -->
+  <text x="20" y="30" class="sonar-text-alert">WARNING: RED ALERT / COMBAT CONDITION</text>
+  <text x="20" y="45" class="sonar-text-alert">HELM: EXECUTING 'CRAZY IVAN' MANEUVER!</text>
+  <text x="20" y="60" class="sonar-text-alert">PROPULSION: EMERGENCY MAX OVERLOAD</text>
+
+  <!-- Griglia sonar allarme -->
+  <circle cx="105" cy="210" r="150" fill="none" stroke="#ff1100" stroke-width="0.3" opacity="0.2" />
+
+  <!-- Sonar pings veloci -->
+  <circle cx="105" cy="210" class="sonar-ring-red" />
+  <circle cx="105" cy="210" class="sonar-ring-red sonar-2" />
+
+  <!-- Bolle rapide scia di cavitazione -->
+  <circle cx="480" cy="205" r="2" class="bubble-fast bf-1" />
+  <circle cx="495" cy="225" r="3" class="bubble-fast bf-2" />
+  <circle cx="475" cy="212" r="1.5" class="bubble-fast bf-3" />
+  <circle cx="490" cy="195" r="2.5" class="bubble-fast bf-4" />
+  <circle cx="485" cy="220" r="4" class="bubble-fast bf-5" />
+
+  <!-- Gruppo Sottomarino (Shaking & Pitching) -->
+  <!-- Typhoon inclinato in virata forte (-1.5deg impostato come base di rotazione) -->
+  <g class="sub-group">
+    <!-- Scia infuocata turbo propulsione -->
+    <path d="M 470 215 H 580" class="thrust-stream" />
+    <path d="M 470 221 H 550" class="thrust-stream" style="animation-duration: 0.6s; stroke-color: #ffaa00;" />
+    
+    <!-- Scafo Inferiore (Rosso) -->
+    <path d="M 120 210
+             C 120 232, 160 235, 180 235
+             H 440
+             C 455 235, 470 228, 470 220
+             V 210 Z" 
+          fill="url(#hull-lower)" />
+
+    <!-- Scafo Superiore (Nero Titanio) -->
+    <path d="M 105 210
+             C 105 195, 140 188, 170 188
+             H 445
+             C 460 188, 470 198, 470 210 Z" 
+          fill="url(#hull-upper)" />
+
+    <!-- Linee scafo -->
+    <line x1="125" y1="210" x2="455" y2="210" stroke="#12141a" stroke-width="1.5" opacity="0.6" />
+    <rect x="140" y="198" width="12" height="4" rx="1" fill="#12141a" opacity="0.8" />
+    <rect x="160" y="198" width="12" height="4" rx="1" fill="#12141a" opacity="0.8" />
+
+    <!-- Torretta di comando -->
+    <path d="M 330 188
+             L 345 145
+             H 390
+             L 395 188 Z" 
+          fill="url(#hull-upper)" />
+    <!-- Dettagli Torretta -->
+    <path d="M 345 145 Q 365 140 390 145 Z" fill="#2d323f" stroke="#1b1d24" stroke-width="1" />
+    <rect x="355" y="152" width="6" height="3" fill="#12141a" />
+    <rect x="365" y="152" width="6" height="3" fill="#12141a" />
+    <rect x="375" y="152" width="6" height="3" fill="#12141a" />
+
+    <!-- Faro allarme rosso lampeggiante sulla torretta -->
+    <circle cx="388" cy="143" r="3" fill="#ff1100" filter="url(#alert-glow)" style="animation: text-blink 0.5s infinite ease-in-out;" />
+
+    <!-- Timone di coda verticale -->
+    <path d="M 445 188
+             L 460 155
+             H 472
+             L 470 210 Z" 
+          fill="url(#hull-upper)" />
+    <!-- Stabilizzatori posteriori -->
+    <path d="M 455 210 L 485 214 L 485 220 L 455 215 Z" fill="url(#hull-lower)" />
+
+    <!-- Tunnel Caterpillar (MHD Tubes sovralimentati, luminescenti d'arancio) -->
+    <rect x="420" y="212" width="50" height="11" rx="3" fill="#260902" stroke="#ff5500" stroke-width="1" />
+    <ellipse cx="470" cy="217" rx="3" ry="5.5" fill="#ff3c00" filter="url(#alert-glow)" />
+
+    <!-- Cappellino da Capitano inclinato per la forza di virata -->
+    <g transform="translate(362, 131) rotate(5)">
+      <path d="M 2 13 L 26 13 L 24 15 L 4 15 Z" fill="#111" />
+      <path d="M 3 13 L 0 5 Q 14 1 28 5 L 25 13 Z" fill="#1a1c23" stroke="#111" stroke-width="0.75" />
+      <rect x="2.5" y="10" width="22" height="3" fill="#b01e1e" />
+      <circle cx="13.5" cy="7" r="2.5" fill="#ffd700" />
+      <circle cx="13.5" cy="7" r="1" fill="#ff0000" />
+    </g>
+  </g>
+</svg>

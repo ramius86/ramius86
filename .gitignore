@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+*.log
+# File generati per i test locali
+test-output/
+temp/
