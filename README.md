@@ -11,6 +11,3 @@ COMMANDER: MARKO RAMIUS (RAMIUS86)
 <p align="center">
   <img src="submarine.svg" width="100%" max-width="600" alt="Red October Sonar Tracking" />
 </p>
-
----
-*Status computed dynamically by serverless GitHub Actions based on commit activity.*
