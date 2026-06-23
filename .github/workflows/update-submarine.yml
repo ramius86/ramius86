@@ -1,0 +1,48 @@
+name: Update Red October Status
+
+on:
+  schedule:
+    # Runs the workflow every 4 hours
+    - cron: '0 */4 * * *'
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch: # Allows manual triggering from the Actions tab
+
+jobs:
+  update-status:
+    runs-on: ubuntu-latest
+    permissions:
+      # Requires write permissions to update submarine.svg in the repository
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Execute Status Calculation
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+        run: node update-submarine.js
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Check if submarine.svg or README.md has changed compared to the last commit
+          if ! git diff --quiet submarine.svg README.md; then
+            git add submarine.svg README.md
+            git commit -m "sonar: auto-update Red October status [skip ci]"
+            git push
+            echo "Changes pushed successfully."
+          else
+            echo "No changes detected in files. Skipping commit."
+          fi
