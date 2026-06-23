@@ -9,5 +9,5 @@ COMMANDER: MARKO RAMIUS (RAMIUS86)
 ```
 
 <p align="center">
-  <img src="submarine.svg?t=1782237028030" width="100%" max-width="600" alt="Red October Sonar Tracking" />
+  <img src="submarine.svg?t=1782237088759" width="100%" max-width="600" alt="Red October Sonar Tracking" />
 </p>
