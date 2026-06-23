@@ -84,9 +84,9 @@
   <rect width="100%" height="100%" fill="url(#ocean-abyss)" />
 
   <!-- Indicatori Sonar Segnale Perso -->
-  <text x="20" y="30" class="sonar-text-lost">STATUS: SEARCH AREA REDUCED</text>
-  <text x="20" y="45" class="sonar-text-lost">CONTACT: LOST (SIGNAL DEGRADED)</text>
-  <text x="20" y="60" class="sonar-text-lost">COORDINATES: LAURENTIAN ABYSS / 3000 FATHOMS</text>
+  <text x="20" y="30" class="sonar-text-lost">CONTACT: LOST / ABYSSAL SILENCE</text>
+  <text x="20" y="45" class="sonar-text-lost">STATUS: PRESUMED SUNK (NO RESPONSE)</text>
+  <text x="20" y="60" class="sonar-text-lost">TACTICAL: LAURENTIAN ABYSS (IDLE &gt; 3 DAYS)</text>
 
   <!-- Griglia sonar statica, degradata, rossa scura -->
   <circle cx="300" cy="200" r="180" fill="none" stroke="#a83232" stroke-width="0.15" opacity="0.1" />

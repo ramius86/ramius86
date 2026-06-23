@@ -85,9 +85,9 @@
   <path d="M 30 15 L 42 21 L 30 27 L 34 21 Z" class="fish" style="animation-delay: 5s; animation-duration: 20s;" />
 
   <!-- Indicatori Sonar Passivo -->
-  <text x="20" y="30" class="sonar-text">RANGE: PASSIVE MONITORING</text>
-  <text x="20" y="45" class="sonar-text">PROPULSION: OFF / DRIFTING</text>
-  <text x="20" y="60" class="sonar-text">ACOUSTICS: HYMNS DETECTED (COLD/SOVIET)</text>
+  <text x="20" y="30" class="sonar-text">CONTACT: RED OCTOBER (SILENT RUNNING)</text>
+  <text x="20" y="45" class="sonar-text">ACOUSTICS: FAINT HYMNS DETECTED</text>
+  <text x="20" y="60" class="sonar-text">TACTICAL: SILENT RUNNING (IDLE 1-3 DAYS)</text>
 
   <!-- Griglia sonar passiva blu scuro -->
   <circle cx="360" cy="200" r="150" fill="none" stroke="#00f0ff" stroke-width="0.15" opacity="0.1" />

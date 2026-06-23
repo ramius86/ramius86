@@ -96,9 +96,9 @@
   <rect y="240" width="100%" height="160" fill="url(#night-sea)" />
 
   <!-- Testo Logbook Militare -->
-  <text x="20" y="30" class="sonar-text-night">CAPTAIN'S LOG: RAMIUS ON DECK</text>
-  <text x="20" y="45" class="sonar-text-night">LOCATION: SEA SURFACE / MOONLIGHT RECON</text>
-  <text x="20" y="60" class="sonar-text-night">STATUS: SURFACED (NIGHT WATCH MODE)</text>
+  <text x="20" y="30" class="sonar-text-night">CONTACT: RED OCTOBER (SURFACED)</text>
+  <text x="20" y="45" class="sonar-text-night">STATUS: NIGHT RECON &amp; BATTERY RECHARGE</text>
+  <text x="20" y="60" class="sonar-text-night">TACTICAL: LATE NIGHT PUSH (00:00 - 05:00)</text>
 
   <!-- Gruppo Sottomarino Surfaced (Oscillante) -->
   <g class="sub-surfaced">

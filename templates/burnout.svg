@@ -125,9 +125,9 @@
   <rect width="100%" height="100%" fill="url(#ocean-alert-grad)" class="alert-bg" />
 
   <!-- Indicatori Sonar Rosso Allarme -->
-  <text x="20" y="30" class="sonar-text-alert">WARNING: RED ALERT / COMBAT CONDITION</text>
-  <text x="20" y="45" class="sonar-text-alert">HELM: EXECUTING 'CRAZY IVAN' MANEUVER!</text>
-  <text x="20" y="60" class="sonar-text-alert">PROPULSION: EMERGENCY MAX OVERLOAD</text>
+  <text x="20" y="30" class="sonar-text-alert">WARNING: RED ALERT (COMBAT CONDITION)</text>
+  <text x="20" y="45" class="sonar-text-alert">HELM: EXECUTING 'CRAZY IVAN' MANEUVER</text>
+  <text x="20" y="60" class="sonar-text-alert">TACTICAL: HIGH SPEED PAYLOAD (&gt;15 COMMITS)</text>
 
   <!-- Griglia sonar allarme -->
   <circle cx="105" cy="210" r="150" fill="none" stroke="#ff1100" stroke-width="0.3" opacity="0.2" />

@@ -129,9 +129,9 @@
   <line x1="105" y1="210" x2="300" y2="140" stroke="#39ff14" stroke-width="0.25" opacity="0.15" />
 
   <!-- Indicatori Sonar su schermo -->
-  <text x="20" y="30" class="sonar-text">RANGE: 10k YDS</text>
-  <text x="20" y="45" class="sonar-text">PROPULSION: MHD (SILENT)</text>
-  <text x="20" y="60" class="sonar-text">CONTACT: RED OCTOBER</text>
+  <text x="20" y="30" class="sonar-text">CONTACT: RED OCTOBER (ACTIVE)</text>
+  <text x="20" y="45" class="sonar-text">PROPULSION: MHD SILENT DRIVE</text>
+  <text x="20" y="60" class="sonar-text">TACTICAL: STANDARD ROUTE (PUSH &lt; 24H)</text>
 
   <!-- Anelli d'onda Sonar (attivi) -->
   <circle cx="105" cy="210" class="sonar-ring" />
