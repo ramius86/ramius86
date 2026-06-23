@@ -24,7 +24,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Execute Status Calculation
         env:
@@ -37,12 +37,12 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          # Check if submarine.svg has changed compared to the last commit
-          if ! git diff --quiet submarine.svg; then
-            git add submarine.svg
+          # Check if submarine.svg or README.md has changed compared to the last commit
+          if ! git diff --quiet submarine.svg README.md; then
+            git add submarine.svg README.md
             git commit -m "sonar: auto-update Red October status [skip ci]"
             git push
             echo "Changes pushed successfully."
           else
-            echo "No changes detected in submarine.svg. Skipping commit."
+            echo "No changes detected in files. Skipping commit."
           fi

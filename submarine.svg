@@ -1,33 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
   <defs>
-    <!-- Gradiente oceano profondo -->
-    <linearGradient id="ocean-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#0a1c3a" />
-      <stop offset="50%" stop-color="#051024" />
-      <stop offset="100%" stop-color="#020712" />
+    <!-- Gradiente abissale nero/blu scuro -->
+    <linearGradient id="ocean-abyss" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#050b14" />
+      <stop offset="60%" stop-color="#02050a" />
+      <stop offset="100%" stop-color="#000205" />
     </linearGradient>
 
-    <!-- Gradiente scafo superiore (nero/grigio scuro titanio) -->
     <linearGradient id="hull-upper" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#2d323f" />
-      <stop offset="100%" stop-color="#1b1d24" />
+      <stop offset="0%" stop-color="#1f222b" />
+      <stop offset="100%" stop-color="#121318" />
     </linearGradient>
 
-    <!-- Gradiente scafo inferiore (rosso ruggine sovietico) -->
     <linearGradient id="hull-lower" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#a83232" />
-      <stop offset="100%" stop-color="#6e1e1e" />
+      <stop offset="0%" stop-color="#692323" />
+      <stop offset="100%" stop-color="#421414" />
     </linearGradient>
 
-    <!-- Bagliore ciano Caterpillar Drive -->
-    <linearGradient id="caterpillar-glow" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00f0ff" stop-opacity="1" />
-      <stop offset="50%" stop-color="#00a2ff" stop-opacity="0.5" />
-      <stop offset="100%" stop-color="#0055ff" stop-opacity="0" />
-    </linearGradient>
-
-    <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="4" result="blur" />
+    <filter id="angler-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
       <feMerge>
         <feMergeNode in="blur" />
         <feMergeNode in="SourceGraphic" />
@@ -36,119 +27,87 @@
   </defs>
 
   <style>
-    /* Animazione oscillazione sottomarino (beccheggio lento delle correnti) */
-    @keyframes submarine-float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-6px) rotate(-0.5deg); }
+    /* Alghe marine oscillanti */
+    @keyframes seaweed-sway {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(6deg); }
     }
-    .sub-group {
-      animation: submarine-float 6s infinite ease-in-out;
-      transform-origin: 300px 200px;
+    .seaweed {
+      fill: none;
+      stroke: #162a22;
+      stroke-width: 3.5;
+      stroke-linecap: round;
+      transform-origin: bottom;
+      animation: seaweed-sway 6s infinite ease-in-out;
     }
+    .seaweed-2 { stroke-width: 2.5; animation-delay: 1.5s; }
+    .seaweed-3 { stroke-width: 3; animation-delay: 3s; }
 
-    /* Raggi solari filtranti dall'alto */
-    @keyframes rays-shimmer {
-      0%, 100% { opacity: 0.15; }
-      50% { opacity: 0.25; }
+    /* Bolle abissali lente e rare */
+    @keyframes abyss-bubbles {
+      0% { transform: translate(0, 0); opacity: 0; }
+      10% { opacity: 0.4; }
+      90% { opacity: 0.3; }
+      100% { transform: translate(-10px, -150px); opacity: 0; }
     }
-    .sunray {
-      fill: #00f0ff;
-      opacity: 0.15;
-      animation: rays-shimmer 4s infinite ease-in-out;
-    }
-
-    /* Pulsazione Sonar frontale */
-    @keyframes sonar-ping {
-      0% { r: 5; opacity: 0.8; stroke-width: 1; }
-      50% { opacity: 0.4; stroke-width: 1.5; }
-      100% { r: 90; opacity: 0; stroke-width: 0.5; }
-    }
-    .sonar-ring {
+    .abyss-bubble {
       fill: none;
       stroke: #39ff14;
-      transform-origin: 105px 210px;
-      animation: sonar-ping 4s infinite cubic-bezier(0.1, 0.8, 0.3, 1);
-    }
-    .sonar-2 { animation-delay: 2s; }
-
-    /* Flusso Caterpillar Drive (propulsore MHD) */
-    @keyframes mhd-flow {
-      0% { stroke-dashoffset: 0; }
-      100% { stroke-dashoffset: -30; }
-    }
-    .caterpillar-stream {
-      stroke: #00f0ff;
-      stroke-width: 3;
-      stroke-linecap: round;
-      stroke-dasharray: 6 4 12 8;
-      animation: mhd-flow 1.5s infinite linear;
-      filter: url(#neon-glow);
-    }
-    .caterpillar-stream-2 { animation-delay: 0.7s; }
-
-    /* Bollicine marine */
-    @keyframes bubble-drift {
-      0% { transform: translate(0, 0); opacity: 0; }
-      10% { opacity: 0.6; }
-      90% { opacity: 0.4; }
-      100% { transform: translate(120px, -40px); opacity: 0; }
-    }
-    .bubble {
-      fill: none;
-      stroke: #00f0ff;
-      stroke-width: 0.75;
+      stroke-width: 0.5;
       opacity: 0;
-      animation: bubble-drift 5s infinite linear;
+      animation: abyss-bubbles 8s infinite linear;
     }
-    .b-1 { animation-delay: 0s; }
-    .b-2 { animation-delay: 1.8s; }
-    .b-3 { animation-delay: 3.5s; }
+    .ab-1 { animation-delay: 0s; }
+    .ab-2 { animation-delay: 4s; }
 
-    /* TestoSonar */
-    .sonar-text {
+    /* Pesce lanterna abissale animato */
+    @keyframes angler-swim {
+      0% { transform: translate(450px, 300px) scaleX(-1); }
+      50% { transform: translate(150px, 280px) scaleX(-1); }
+      51% { transform: translate(150px, 280px) scaleX(1); }
+      100% { transform: translate(450px, 300px) scaleX(1); }
+    }
+    .anglerfish {
+      animation: angler-swim 18s infinite ease-in-out;
+    }
+
+    .sonar-text-lost {
       font-family: 'Courier New', monospace;
       font-size: 11px;
-      fill: #39ff14;
-      opacity: 0.8;
-      filter: url(#neon-glow);
+      fill: #a83232;
+      font-weight: bold;
+      opacity: 0.85;
     }
   </style>
 
-  <!-- Oceano Sfondo -->
-  <rect width="100%" height="100%" fill="url(#ocean-grad)" />
+  <!-- Oceano Abissale -->
+  <rect width="100%" height="100%" fill="url(#ocean-abyss)" />
 
-  <!-- Raggi Solari filtranti -->
-  <polygon points="50,0 120,0 220,400 120,400" class="sunray" />
-  <polygon points="250,0 350,0 480,400 340,400" class="sunray" style="animation-delay: 1s;" />
-  <polygon points="450,0 520,0 590,400 500,400" class="sunray" style="animation-delay: 2.5s;" />
+  <!-- Indicatori Sonar Segnale Perso -->
+  <text x="20" y="30" class="sonar-text-lost">CONTACT: LOST / ABYSSAL SILENCE</text>
+  <text x="20" y="45" class="sonar-text-lost">STATUS: PRESUMED SUNK (NO RESPONSE)</text>
+  <text x="20" y="60" class="sonar-text-lost">TACTICAL: LAURENTIAN ABYSS (IDLE &gt; 3 DAYS)</text>
 
-  <!-- Radar / Griglia Sonar in background soffusa -->
-  <circle cx="105" cy="210" r="120" fill="none" stroke="#39ff14" stroke-width="0.25" opacity="0.15" />
-  <circle cx="105" cy="210" r="200" fill="none" stroke="#39ff14" stroke-width="0.25" opacity="0.1" />
-  <line x1="105" y1="210" x2="300" y2="280" stroke="#39ff14" stroke-width="0.25" opacity="0.15" />
-  <line x1="105" y1="210" x2="300" y2="140" stroke="#39ff14" stroke-width="0.25" opacity="0.15" />
+  <!-- Griglia sonar statica, degradata, rossa scura -->
+  <circle cx="300" cy="200" r="180" fill="none" stroke="#a83232" stroke-width="0.15" opacity="0.1" />
 
-  <!-- Indicatori Sonar su schermo -->
-  <text x="20" y="30" class="sonar-text">CONTACT: RED OCTOBER (ACTIVE)</text>
-  <text x="20" y="45" class="sonar-text">PROPULSION: MHD SILENT DRIVE</text>
-  <text x="20" y="60" class="sonar-text">TACTICAL: STANDARD ROUTE (PUSH &lt; 24H)</text>
+  <!-- Fondale Marino (Sabbia / Rocce abissali) -->
+  <path d="M 0 320 Q 150 315 300 330 T 600 320 L 600 400 L 0 400 Z" fill="#040912" />
+  <path d="M 0 340 Q 200 330 400 350 T 600 335 L 600 400 L 0 400 Z" fill="#02050b" />
 
-  <!-- Anelli d'onda Sonar (attivi) -->
-  <circle cx="105" cy="210" class="sonar-ring" />
-  <circle cx="105" cy="210" class="sonar-ring sonar-2" />
+  <!-- Alghe marine cresciute sul fondale -->
+  <path d="M 120 330 Q 110 250 130 180" class="seaweed" transform="translate(0,0)" />
+  <path d="M 135 330 Q 150 270 140 200" class="seaweed seaweed-2" />
+  <path d="M 450 325 Q 460 260 440 210" class="seaweed seaweed-3" />
+  <path d="M 470 325 Q 450 240 480 190" class="seaweed" />
 
-  <!-- Bollicine Marine che derivano dalla scia -->
-  <circle cx="485" cy="210" r="2" class="bubble b-1" />
-  <circle cx="495" cy="225" r="1.5" class="bubble b-2" />
-  <circle cx="480" cy="218" r="3" class="bubble b-3" />
+  <!-- Bollicine lente dal sottomarino affondato -->
+  <circle cx="360" cy="250" r="2.5" class="abyss-bubble ab-1" />
+  <circle cx="365" cy="245" r="1.5" class="abyss-bubble ab-2" />
 
-  <!-- Gruppo Sottomarino (Soggetto Principale) -->
-  <g class="sub-group">
-    <!-- Scia del Caterpillar Drive (MHD Exhaust) -->
-    <path d="M 470 215 H 580" class="caterpillar-stream" />
-    <path d="M 470 221 H 560" class="caterpillar-stream caterpillar-stream-2" />
-    
-    <!-- Scafo Inferiore (Rosso) -->
+  <!-- Gruppo Sottomarino (Adagiato sul fondale e leggermente inclinato) -->
+  <g transform="translate(10, 90) rotate(6)">
+    <!-- Scafo Inferiore (Rosso scuro ossidato) -->
     <path d="M 120 210
              C 120 232, 160 235, 180 235
              H 440
@@ -156,55 +115,72 @@
              V 210 Z" 
           fill="url(#hull-lower)" />
 
-    <!-- Scafo Superiore (Nero Titanio) -->
+    <!-- Scafo Superiore (Nero Titanio spento) -->
     <path d="M 105 210
              C 105 195, 140 188, 170 188
              H 445
              C 460 188, 470 198, 470 210 Z" 
           fill="url(#hull-upper)" />
 
-    <!-- Dettagli dello scafo (Linee di pannello e portelli siluri) -->
-    <line x1="125" y1="210" x2="455" y2="210" stroke="#12141a" stroke-width="1.5" opacity="0.6" />
-    <!-- Linee di galleggiamento o pannelli -->
-    <rect x="140" y="198" width="12" height="4" rx="1" fill="#12141a" opacity="0.8" />
-    <rect x="160" y="198" width="12" height="4" rx="1" fill="#12141a" opacity="0.8" />
+    <!-- Linee scafo -->
+    <line x1="125" y1="210" x2="455" y2="210" stroke="#000000" stroke-width="1.5" opacity="0.8" />
+    <rect x="140" y="198" width="12" height="4" rx="1" fill="#000000" opacity="0.9" />
+    <rect x="160" y="198" width="12" height="4" rx="1" fill="#000000" opacity="0.9" />
 
-    <!-- Torretta di comando (Sail / Conning Tower) -->
+    <!-- Torretta di comando -->
     <path d="M 330 188
              L 345 145
              H 390
              L 395 188 Z" 
           fill="url(#hull-upper)" />
-    <!-- Dettaglio Torretta (Cupola sonar e finestrini) -->
-    <path d="M 345 145 Q 365 140 390 145 Z" fill="#2d323f" stroke="#1b1d24" stroke-width="1" />
-    <rect x="355" y="152" width="6" height="3" fill="#12141a" />
-    <rect x="365" y="152" width="6" height="3" fill="#12141a" />
-    <rect x="375" y="152" width="6" height="3" fill="#12141a" />
+    <!-- Finestrini spenti / neri -->
+    <rect x="355" y="152" width="6" height="3" fill="#000000" />
+    <rect x="365" y="152" width="6" height="3" fill="#000000" />
+    <rect x="375" y="152" width="6" height="3" fill="#000000" />
 
-    <!-- Timone di coda verticale (Rudder) -->
+    <!-- Timone di coda -->
     <path d="M 445 188
              L 460 155
              H 472
              L 470 210 Z" 
           fill="url(#hull-upper)" />
-    <!-- Stabilizzatori posteriori orizzontali -->
+    <!-- Stabilizzatori -->
     <path d="M 455 210 L 485 214 L 485 220 L 455 215 Z" fill="url(#hull-lower)" />
 
-    <!-- Tunnel del Caterpillar Drive (MHD Tubes laterali) -->
-    <rect x="420" y="212" width="50" height="11" rx="3" fill="#111317" stroke="#2d323f" stroke-width="1" />
-    <ellipse cx="470" cy="217" rx="3" ry="5.5" fill="#00f0ff" filter="url(#neon-glow)" />
+    <!-- Tunnel Caterpillar (Spento, coperto d'ombra) -->
+    <rect x="420" y="212" width="50" height="11" rx="3" fill="#050608" stroke="#1f222b" stroke-width="1" />
+    <ellipse cx="470" cy="217" rx="3" ry="5.5" fill="#000" />
 
-    <!-- Dettaglio Simpatico e non-cringe: Il cappello da Capitano sovietico di Marko Ramius posato sulla torretta -->
-    <g transform="translate(360, 131)">
-      <!-- Visiera -->
-      <path d="M 2 13 L 26 13 L 24 15 L 4 15 Z" fill="#111" />
-      <!-- Parte superiore del cappello (bianca/nera con visiera, stile marina militare russa) -->
-      <path d="M 3 13 L 0 5 Q 14 1 28 5 L 25 13 Z" fill="#1a1c23" stroke="#111" stroke-width="0.75" />
-      <!-- Fascia rossa -->
-      <rect x="2.5" y="10" width="22" height="3" fill="#b01e1e" />
-      <!-- Emblema dorato con stella rossa al centro -->
-      <circle cx="13.5" cy="7" r="2.5" fill="#ffd700" />
-      <circle cx="13.5" cy="7" r="1" fill="#ff0000" />
+    <!-- Alghe marine cresciute sulla torretta -->
+    <path d="M 370 148 Q 365 120 375 105" class="seaweed seaweed-2" stroke="#0e1b16" />
+
+    <!-- Cappellino da Capitano sovietico: rovesciato a terra, parzialmente coperto dal fango (riferimento malinconico) -->
+    <g transform="translate(240, 230) rotate(110)">
+      <path d="M 2 13 L 26 13 L 24 15 L 4 15 Z" fill="#000" />
+      <path d="M 3 13 L 0 5 Q 14 1 28 5 L 25 13 Z" fill="#15171d" stroke="#000" stroke-width="0.75" />
+      <rect x="2.5" y="10" width="22" height="3" fill="#751717" />
+      <circle cx="13.5" cy="7" r="2.5" fill="#bfa300" opacity="0.6" />
     </g>
+  </g>
+
+  <!-- Pesce Lanterna Abissale (Anglerfish) Animato -->
+  <g class="anglerfish">
+    <!-- Bagliore della lampadina -->
+    <circle cx="110" cy="265" r="15" fill="#39ff14" fill-opacity="0.35" filter="url(#angler-glow)" />
+    <!-- Lampadina -->
+    <circle cx="110" cy="265" r="3" fill="#ffffff" filter="url(#angler-glow)" />
+    <!-- Esca (Antenna flessibile) -->
+    <path d="M 130 290 Q 115 270 110 265" fill="none" stroke="#222" stroke-width="1.5" />
+    <!-- Corpo del pesce -->
+    <path d="M 130 290 
+             C 140 280, 160 280, 165 295 
+             L 175 288 L 175 302 L 165 295
+             C 160 310, 140 310, 130 300
+             Z" 
+          fill="#1c1f24" stroke="#2c3038" stroke-width="1" />
+    <!-- Occhio spettrale -->
+    <circle cx="138" cy="293" r="2" fill="#ffffff" />
+    <!-- Denti affilati -->
+    <polygon points="129,297 131,299 133,297 135,299" fill="#ffffff" />
   </g>
 </svg>

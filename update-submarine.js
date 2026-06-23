@@ -142,6 +142,21 @@ try {
   fs.copyFileSync(templatePath, outputPath);
   console.log(`[SUCCESS] Updated submarine.svg with template: ${state}.svg`);
 
+  // Update README.md with cache buster to force GitHub Camo to refresh the image
+  const readmePath = path.join(__dirname, 'README.md');
+  if (fs.existsSync(readmePath)) {
+    const readmeContent = fs.readFileSync(readmePath, 'utf8');
+    const timestamp = Date.now();
+    const updatedContent = readmeContent.replace(
+      /submarine\.svg(?:\?t=\d+)?/g,
+      `submarine.svg?t=${timestamp}`
+    );
+    if (updatedContent !== readmeContent) {
+      fs.writeFileSync(readmePath, updatedContent, 'utf8');
+      console.log(`[SUCCESS] Injected cache buster in README.md: t=${timestamp}`);
+    }
+  }
+
 } catch (error) {
   console.error(`[ERROR] An error occurred during the update:`, error.message);
   // Safe fallback
