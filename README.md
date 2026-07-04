@@ -1,3 +1,3 @@
 <p align="center">
-  <img src="submarine.svg?t=1783184244219" width="100%" max-width="800" alt="Red October" />
+  <img src="submarine.svg?t=1783198107255" width="100%" max-width="800" alt="Red October" />
 </p>
