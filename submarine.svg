@@ -1,221 +1,205 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%" shape-rendering="crispEdges">
   <defs>
-    <!-- Pixel Dither Patterns for Abyssal Night -->
+    <!-- Pixel Dither Patterns for Spectral Green Abyss -->
     <pattern id="dither-1" width="4" height="4" patternUnits="userSpaceOnUse">
-      <rect x="0" y="0" width="2" height="2" fill="#1e1b4b" />
-      <rect x="2" y="2" width="2" height="2" fill="#1e1b4b" />
+      <rect x="0" y="0" width="2" height="2" fill="#047857" />
+      <rect x="2" y="2" width="2" height="2" fill="#047857" />
     </pattern>
     <pattern id="dither-2" width="4" height="4" patternUnits="userSpaceOnUse">
-      <rect x="0" y="0" width="2" height="2" fill="#0f172a" />
-      <rect x="2" y="2" width="2" height="2" fill="#0f172a" />
+      <rect x="0" y="0" width="2" height="2" fill="#022c22" />
+      <rect x="2" y="2" width="2" height="2" fill="#022c22" />
     </pattern>
   </defs>
 
   <style><![CDATA[
     /* Chiptune Typography */
-    .px-text { font-family: ui-monospace, "SF Mono", Monaco, Consolas, "Courier New", monospace; font-weight: 900; font-size: 11px; fill: #a5b4fc; letter-spacing: 1px; }
-    .px-title { font-family: ui-monospace, "SF Mono", Monaco, Consolas, "Courier New", monospace; font-weight: 900; font-size: 11px; fill: #818cf8; letter-spacing: 1.5px; }
-    .px-sub { font-family: ui-monospace, "SF Mono", Monaco, Consolas, "Courier New", monospace; font-weight: bold; font-size: 9px; fill: #6366f1; }
-    .px-cyan { fill: #2dd4bf; }
-    .px-pink { fill: #f472b6; }
+    .px-text { font-family: ui-monospace, "SF Mono", Monaco, Consolas, "Courier New", monospace; font-weight: 900; font-size: 11px; fill: #6ee7b7; letter-spacing: 1px; }
+    .px-title { font-family: ui-monospace, "SF Mono", Monaco, Consolas, "Courier New", monospace; font-weight: 900; font-size: 11px; fill: #34d399; letter-spacing: 1.5px; }
+    .px-sub { font-family: ui-monospace, "SF Mono", Monaco, Consolas, "Courier New", monospace; font-weight: bold; font-size: 9px; fill: #f87171; }
+    .px-green { fill: #34d399; }
+    .px-mint { fill: #a7f3d0; }
     .px-white { fill: #ffffff; }
 
     /* Keyframe Animations */
-    @keyframes pixel-bob {
+    @keyframes ghost-float {
       0%, 100% { transform: translateY(0px); }
-      25% { transform: translateY(-3px); }
+      25% { transform: translateY(-2px); }
       50% { transform: translateY(0px); }
-      75% { transform: translateY(3px); }
+      75% { transform: translateY(2px); }
     }
-    @keyframes prop-slow {
-      0% { transform: scaleY(1); }
-      25% { transform: scaleY(0.25); }
-      50% { transform: scaleY(-1); }
-      75% { transform: scaleY(-0.25); }
-      100% { transform: scaleY(1); }
-    }
-    @keyframes jelly-rise-1 {
-      0% { transform: translate(170px, 420px); opacity: 0; }
-      15% { opacity: 1; }
-      85% { opacity: 1; }
-      100% { transform: translate(140px, -60px); opacity: 0; }
-    }
-    @keyframes jelly-rise-2 {
-      0% { transform: translate(620px, 430px); opacity: 0; }
-      20% { opacity: 1; }
-      80% { opacity: 1; }
-      100% { transform: translate(650px, -50px); opacity: 0; }
-    }
-    @keyframes note-rise {
-      0% { transform: translate(380px, 70px); opacity: 0; }
+    @keyframes wisp-dance {
+      0% { transform: translate(370px, 80px); opacity: 0; }
       25% { opacity: 1; }
       75% { opacity: 1; }
-      100% { transform: translate(430px, -15px); opacity: 0; }
+      100% { transform: translate(350px, -20px); opacity: 0; }
     }
-    @keyframes coffee-steam {
-      0%, 100% { transform: translateY(0); opacity: 0.3; }
-      50% { transform: translateY(-4px); opacity: 0.8; }
+    @keyframes angler-patrol {
+      0% { transform: translateX(820px); }
+      50% { transform: translateX(650px); }
+      100% { transform: translateX(820px); }
     }
-    @keyframes caterpillar-glow {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 0.9; }
+    @keyframes kelp-dance {
+      0%, 100% { transform: skewX(-3deg); }
+      50% { transform: skewX(3deg); }
+    }
+    @keyframes lure-blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0.3; }
     }
 
-    .sub-pixel-group { transform-origin: 400px 190px; animation: pixel-bob 3.6s steps(4) infinite; }
-    .pixel-propeller { transform-origin: 98px 195px; animation: prop-slow 1.4s steps(4) infinite; }
-    .jelly-1 { animation: jelly-rise-1 14s steps(20) infinite; }
-    .jelly-2 { animation: jelly-rise-2 18s steps(24) infinite; animation-delay: 5s; }
-    .music-note { animation: note-rise 6s steps(10) infinite; }
-    .steam { animation: coffee-steam 1.4s steps(3) infinite; }
-    .caterpillar-glow { animation: caterpillar-glow 2.5s steps(3) infinite; }
+    .sub-pixel-group { transform-origin: 400px 220px; animation: ghost-float 4.5s steps(4) infinite; }
+    .ghost-wisp { animation: wisp-dance 5s steps(10) infinite; }
+    .angler-fish { animation: angler-patrol 16s steps(20) infinite ease-in-out; }
+    .seaweed { transform-origin: 500px 380px; animation: kelp-dance 3.5s steps(4) infinite ease-in-out; }
+    .lure-light { animation: lure-blink 1.5s steps(2) infinite; }
   ]]></style>
 
-  <!-- ABYSSAL DEEP NIGHT OCEAN (Full View y=0 to y=400) -->
-  <rect x="0" y="0" width="800" height="50" fill="#03071e" />
-  <rect x="0" y="50" width="800" height="60" fill="#080d28" />
-  <rect x="0" y="110" width="800" height="70" fill="#0f172a" />
-  <rect x="0" y="180" width="800" height="80" fill="#1e1b4b" />
-  <rect x="0" y="260" width="800" height="60" fill="#0f172a" />
-  <rect x="0" y="320" width="800" height="45" fill="#080d28" />
-  <rect x="0" y="365" width="800" height="35" fill="#03071e" />
+  <!-- ABYSSAL DEEP GREEN TRENCH (Full View y=0 to y=400) -->
+  <rect x="0" y="0" width="800" height="50" fill="#01140d" />
+  <rect x="0" y="50" width="800" height="60" fill="#022c22" />
+  <rect x="0" y="110" width="800" height="70" fill="#064e3b" />
+  <rect x="0" y="180" width="800" height="80" fill="#047857" />
+  <rect x="0" y="260" width="800" height="60" fill="#064e3b" />
+  <rect x="0" y="320" width="800" height="45" fill="#022c22" />
+  <rect x="0" y="365" width="800" height="35" fill="#01140d" />
 
   <!-- Dither Transition Stripes -->
-  <rect x="0" y="46" width="800" height="8" fill="url(#dither-1)" />
+  <rect x="0" y="46" width="800" height="8" fill="url(#dither-2)" />
   <rect x="0" y="106" width="800" height="8" fill="url(#dither-1)" />
-  <rect x="0" y="176" width="800" height="8" fill="url(#dither-2)" />
+  <rect x="0" y="176" width="800" height="8" fill="url(#dither-1)" />
   <rect x="0" y="256" width="800" height="8" fill="url(#dither-2)" />
-  <rect x="0" y="316" width="800" height="8" fill="url(#dither-1)" />
+  <rect x="0" y="316" width="800" height="8" fill="url(#dither-2)" />
 
-  <!-- Bioluminescent Plankton Flecks -->
-  <g fill="#818cf8">
-    <rect x="130" y="80" width="2" height="2" /><rect x="250" y="130" width="3" height="3" fill="#2dd4bf" />
-    <rect x="490" y="90" width="2" height="2" fill="#c084fc" /><rect x="630" y="140" width="3" height="3" fill="#818cf8" />
-    <rect x="330" y="330" width="2" height="2" fill="#2dd4bf" /><rect x="710" y="310" width="3" height="3" fill="#c084fc" />
+  <!-- Eerie Plankton Motes -->
+  <g fill="#6ee7b7">
+    <rect x="110" y="90" width="2" height="2" /><rect x="230" y="140" width="3" height="3" />
+    <rect x="470" y="80" width="2" height="2" /><rect x="610" y="130" width="3" height="3" />
+    <rect x="350" y="320" width="2" height="2" /><rect x="730" y="300" width="3" height="3" />
   </g>
 
-  <!-- PIXEL SEABED (Dark Abyssal Sand and Trench Rocks) -->
-  <rect x="0" y="368" width="800" height="32" fill="#312e81" />
-  <rect x="0" y="374" width="800" height="26" fill="#1e1b4b" />
-  <rect x="0" y="386" width="800" height="14" fill="#0f172a" />
-  <g fill="#4338ca">
-    <rect x="80" y="372" width="6" height="2" /><rect x="240" y="374" width="8" height="2" />
-    <rect x="420" y="372" width="6" height="2" /><rect x="640" y="376" width="8" height="2" />
+  <!-- PIXEL SEABED (Abyssal Trench Silt and Sunken Rocks) -->
+  <rect x="0" y="360" width="800" height="40" fill="#022c22" />
+  <rect x="0" y="368" width="800" height="32" fill="#011a12" />
+  <rect x="0" y="380" width="800" height="20" fill="#000e09" />
+  <g fill="#059669">
+    <rect x="70" y="364" width="6" height="2" /><rect x="210" y="366" width="8" height="2" />
+    <rect x="390" y="364" width="6" height="2" /><rect x="630" y="368" width="8" height="2" />
   </g>
 
-  <!-- Deep Ocean Rocks -->
-  <g fill="#1e293b">
-    <rect x="90" y="356" width="36" height="14" /><rect x="96" y="348" width="24" height="8" fill="#334155" />
-    <rect x="640" y="350" width="46" height="20" /><rect x="650" y="342" width="28" height="8" fill="#334155" />
+  <!-- Trench Rocks Encrusted in Algae -->
+  <g fill="#01140d">
+    <rect x="70" y="348" width="40" height="18" /><rect x="76" y="340" width="26" height="8" fill="#022c22" />
+    <rect x="630" y="344" width="50" height="22" /><rect x="640" y="336" width="30" height="8" fill="#022c22" />
   </g>
 
-  <!-- BIOLUMINESCENT PIXEL JELLYFISH 1 (Pink/Cyan) -->
-  <g class="jelly-1">
-    <!-- Jelly Bell -->
-    <rect x="-10" y="0" width="20" height="8" fill="#f472b6" />
-    <rect x="-12" y="8" width="24" height="6" fill="#ec4899" />
-    <rect x="-6" y="-4" width="12" height="4" fill="#f472b6" />
-    <!-- Inner Core Glow -->
-    <rect x="-4" y="2" width="8" height="6" fill="#fbcfe8" />
-    <!-- Pixel Tentacles -->
-    <g fill="#2dd4bf">
-      <rect x="-8" y="14" width="2" height="18" /><rect x="-10" y="22" width="2" height="12" />
-      <rect x="-3" y="14" width="2" height="26" fill="#fbcfe8" /><rect x="-1" y="28" width="2" height="16" />
-      <rect x="3" y="14" width="2" height="24" fill="#fbcfe8" /><rect x="5" y="24" width="2" height="18" />
-      <rect x="8" y="14" width="2" height="16" /><rect x="10" y="20" width="2" height="12" />
-    </g>
+  <!-- Giant Overgrown Seaweed / Kelp -->
+  <g class="seaweed">
+    <rect x="140" y="300" width="6" height="65" fill="#047857" />
+    <rect x="134" y="310" width="6" height="12" fill="#10b981" /><rect x="146" y="330" width="6" height="12" fill="#10b981" />
+    <rect x="134" y="350" width="6" height="12" fill="#10b981" />
+    <rect x="155" y="320" width="6" height="45" fill="#065f46" /><rect x="161" y="335" width="6" height="10" fill="#047857" />
+    <rect x="580" y="295" width="6" height="70" fill="#047857" /><rect x="574" y="310" width="6" height="14" fill="#10b981" />
+    <rect x="586" y="335" width="6" height="14" fill="#10b981" />
   </g>
 
-  <!-- BIOLUMINESCENT PIXEL JELLYFISH 2 (Cyan/Violet) -->
-  <g class="jelly-2">
-    <rect x="-8" y="0" width="16" height="6" fill="#2dd4bf" />
-    <rect x="-10" y="6" width="20" height="5" fill="#0d9488" />
-    <rect x="-4" y="-3" width="8" height="3" fill="#2dd4bf" />
-    <rect x="-3" y="2" width="6" height="4" fill="#ccfbf1" />
-    <g fill="#a855f7">
-      <rect x="-6" y="11" width="2" height="16" /><rect x="-2" y="11" width="2" height="22" fill="#c084fc" />
-      <rect x="2" y="11" width="2" height="20" fill="#c084fc" /><rect x="6" y="11" width="2" height="15" />
-    </g>
+  <!-- ABYSSAL ANGLERFISH PATROLLING THE WRECKAGE -->
+  <g class="angler-fish" transform="translate(0, 270)">
+    <rect x="0" y="4" width="16" height="12" fill="#01140d" />
+    <rect x="4" y="0" width="10" height="16" fill="#01140d" />
+    <rect x="16" y="2" width="6" height="12" fill="#022c22" />
+    <!-- Sharp Teeth -->
+    <rect x="0" y="6" width="2" height="2" fill="#ffffff" />
+    <rect x="0" y="10" width="2" height="2" fill="#ffffff" />
+    <rect x="2" y="8" width="2" height="2" fill="#ffffff" />
+    <!-- Glowing Esca / Lure -->
+    <rect x="6" y="-6" width="2" height="6" fill="#10b981" />
+    <rect x="8" y="-8" width="4" height="4" fill="#34d399" class="lure-light" />
   </g>
 
-  <!-- FLOATING PIXEL MUSIC NOTE FROM CONNING TOWER -->
-  <g class="music-note">
-    <rect x="0" y="6" width="6" height="4" fill="#2dd4bf" />
-    <rect x="4" y="0" width="2" height="8" fill="#2dd4bf" />
-    <rect x="4" y="0" width="5" height="2" fill="#2dd4bf" />
+  <!-- SPECTRAL PIXEL WISP / GHOST RISING FROM CONNING TOWER -->
+  <g class="ghost-wisp">
+    <rect x="0" y="2" width="12" height="8" fill="#6ee7b7" />
+    <rect x="2" y="0" width="8" height="12" fill="#6ee7b7" />
+    <rect x="4" y="4" width="2" height="2" fill="#01140d" /> <!-- Ghost Eyes -->
+    <rect x="8" y="4" width="2" height="2" fill="#01140d" />
+    <rect x="2" y="12" width="3" height="3" fill="#a7f3d0" />
+    <rect x="7" y="12" width="3" height="3" fill="#a7f3d0" />
   </g>
 
-  <!-- 16-BIT TYPHOON SUBMARINE (SILENT CATERPILLAR RUNNING) -->
+  <!-- 16-BIT TYPHOON SUBMARINE (SUNKEN ABYSSAL WRECKAGE) -->
   <g class="sub-pixel-group">
-    <!-- Caterpillar Drive MHD Vent Glow on Bottom Keel -->
-    <g class="caterpillar-glow">
-      <rect x="240" y="248" width="80" height="4" fill="#2dd4bf" />
-      <rect x="440" y="248" width="80" height="4" fill="#2dd4bf" />
+    <!-- Stationary Propeller (Covered in Barnacles and Seaweed) -->
+    <g>
+      <rect x="94" y="172" width="6" height="46" fill="#064e3b" />
+      <rect x="90" y="182" width="14" height="26" fill="#022c22" />
+      <rect x="88" y="190" width="18" height="10" fill="#047857" />
+      <!-- Seaweed on Propeller -->
+      <rect x="96" y="210" width="4" height="14" fill="#10b981" />
     </g>
 
-    <!-- PROPELLER (Directly attached to stern hub at x=98) -->
-    <g class="pixel-propeller">
-      <rect x="94" y="172" width="6" height="46" fill="#92400e" />
-      <rect x="90" y="182" width="14" height="26" fill="#78350f" />
-      <rect x="88" y="190" width="18" height="10" fill="#b45309" />
-    </g>
-
-    <!-- Propeller Hub and Shaft Connection -->
-    <rect x="98" y="191" width="10" height="8" fill="#78350f" />
-    <rect x="100" y="189" width="8" height="12" fill="#451a03" />
+    <!-- Propeller Hub and Shaft -->
+    <rect x="98" y="191" width="10" height="8" fill="#022c22" />
+    <rect x="100" y="189" width="8" height="12" fill="#01140d" />
 
     <!-- Tapered Stern Transition -->
-    <rect x="106" y="182" width="12" height="13" fill="#1e293b" />
-    <rect x="118" y="170" width="14" height="25" fill="#1e293b" />
-    <rect x="132" y="158" width="16" height="37" fill="#1e293b" />
-    <rect x="148" y="150" width="14" height="45" fill="#1e293b" />
-    <!-- Lower Stern Taper (Deep Plum Red) -->
-    <rect x="106" y="195" width="12" height="12" fill="#701a75" />
-    <rect x="118" y="195" width="14" height="24" fill="#701a75" />
-    <rect x="132" y="195" width="16" height="34" fill="#701a75" />
-    <rect x="148" y="195" width="14" height="42" fill="#701a75" />
+    <rect x="106" y="182" width="12" height="13" fill="#0f261d" />
+    <rect x="118" y="170" width="14" height="25" fill="#0f261d" />
+    <rect x="132" y="158" width="16" height="37" fill="#0f261d" />
+    <rect x="148" y="150" width="14" height="45" fill="#0f261d" />
+    <!-- Lower Stern Taper (Algae Encrusted) -->
+    <rect x="106" y="195" width="12" height="12" fill="#044d36" />
+    <rect x="118" y="195" width="14" height="24" fill="#044d36" />
+    <rect x="132" y="195" width="16" height="34" fill="#044d36" />
+    <rect x="148" y="195" width="14" height="42" fill="#044d36" />
 
-    <!-- Aft Cruciform Tail Fins -->
-    <rect x="126" y="112" width="22" height="48" fill="#1e293b" />
-    <rect x="116" y="112" width="10" height="18" fill="#0f172a" />
-    <rect x="148" y="112" width="6" height="48" fill="#334155" />
-    <rect x="126" y="228" width="22" height="44" fill="#701a75" />
-    <rect x="116" y="254" width="10" height="18" fill="#4a044e" />
-    <rect x="148" y="228" width="6" height="44" fill="#86198f" />
+    <!-- Aft Tail Fins -->
+    <rect x="126" y="112" width="22" height="48" fill="#064e3b" />
+    <rect x="116" y="112" width="10" height="18" fill="#022c22" />
+    <rect x="148" y="112" width="6" height="48" fill="#047857" />
+    <rect x="126" y="228" width="22" height="44" fill="#044d36" />
+    <rect x="116" y="254" width="10" height="18" fill="#022c22" />
+    <rect x="148" y="228" width="6" height="44" fill="#065f46" />
 
-    <!-- MAIN HULL BODY -->
-    <rect x="162" y="146" width="520" height="49" fill="#1e293b" />
-    <rect x="170" y="140" width="495" height="6" fill="#334155" />
-    <rect x="190" y="136" width="455" height="4" fill="#475569" />
-    <rect x="220" y="132" width="405" height="4" fill="#64748b" />
+    <!-- MAIN HULL BODY (Spectral Translucent Slate/Green) -->
+    <rect x="162" y="146" width="520" height="49" fill="#0f261d" />
+    <rect x="170" y="140" width="495" height="6" fill="#14362a" />
+    <rect x="190" y="136" width="455" height="4" fill="#1a4535" />
+    <rect x="220" y="132" width="405" height="4" fill="#235c47" />
 
-    <!-- Lower Hull (Night Wine Plum) -->
-    <rect x="162" y="195" width="520" height="45" fill="#701a75" />
-    <rect x="170" y="240" width="495" height="6" fill="#581c87" />
-    <rect x="190" y="246" width="455" height="4" fill="#3b0764" />
-    <rect x="220" y="250" width="405" height="4" fill="#1e1b4b" />
+    <!-- Lower Hull -->
+    <rect x="162" y="195" width="520" height="45" fill="#044d36" />
+    <rect x="170" y="240" width="495" height="6" fill="#033827" />
+    <rect x="190" y="246" width="455" height="4" fill="#02291c" />
+    <rect x="220" y="250" width="405" height="4" fill="#011a12" />
 
-    <!-- Waterline Boundary Line -->
-    <rect x="106" y="193" width="576" height="4" fill="#020617" />
-    <rect x="106" y="195" width="576" height="2" fill="#6366f1" opacity="0.4" />
+    <!-- Waterline Seam with Spectral Green Energy -->
+    <rect x="106" y="193" width="576" height="4" fill="#01140d" />
+    <rect x="106" y="195" width="576" height="2" fill="#34d399" opacity="0.6" />
 
     <!-- Rounded Bow Section -->
-    <rect x="682" y="152" width="16" height="43" fill="#1e293b" />
-    <rect x="698" y="160" width="14" height="35" fill="#1e293b" />
-    <rect x="712" y="172" width="12" height="23" fill="#1e293b" />
-    <rect x="724" y="184" width="8" height="11" fill="#4338ca" />
-    <rect x="682" y="195" width="16" height="39" fill="#701a75" />
-    <rect x="698" y="195" width="14" height="31" fill="#701a75" />
-    <rect x="712" y="195" width="12" height="19" fill="#581c87" />
-    <rect x="724" y="195" width="8" height="8" fill="#4338ca" />
+    <rect x="682" y="152" width="16" height="43" fill="#0f261d" />
+    <rect x="698" y="160" width="14" height="35" fill="#0f261d" />
+    <rect x="712" y="172" width="12" height="23" fill="#0f261d" />
+    <rect x="724" y="184" width="8" height="11" fill="#047857" />
+    <rect x="682" y="195" width="16" height="39" fill="#044d36" />
+    <rect x="698" y="195" width="14" height="31" fill="#044d36" />
+    <rect x="712" y="195" width="12" height="19" fill="#033827" />
+    <rect x="724" y="195" width="8" height="8" fill="#047857" />
 
     <!-- Torpedo Tube Openings -->
-    <g fill="#020617">
+    <g fill="#01140d">
       <rect x="690" y="172" width="12" height="4" /><rect x="690" y="180" width="12" height="4" />
       <rect x="690" y="202" width="12" height="4" /><rect x="690" y="210" width="12" height="4" />
     </g>
 
-    <!-- VLS Silos Hatches -->
-    <g fill="#0f172a">
+    <!-- Spectral Fracture Lines along Hull -->
+    <g fill="#34d399">
+      <rect x="270" y="160" width="10" height="2" /><rect x="278" y="162" width="8" height="2" /><rect x="284" y="164" width="10" height="2" />
+      <rect x="520" y="178" width="12" height="2" /><rect x="530" y="180" width="8" height="2" />
+    </g>
+
+    <!-- VLS Silo Hatches -->
+    <g fill="#022c22">
       <rect x="440" y="132" width="10" height="4" /><rect x="454" y="132" width="10" height="4" />
       <rect x="468" y="132" width="10" height="4" /><rect x="482" y="132" width="10" height="4" />
       <rect x="496" y="132" width="10" height="4" /><rect x="510" y="132" width="10" height="4" />
@@ -223,78 +207,62 @@
       <rect x="552" y="132" width="10" height="4" /><rect x="566" y="132" width="10" height="4" />
     </g>
 
-    <!-- CONNING TOWER / SAIL (With Chill Captain drinking Coffee) -->
+    <!-- CONNING TOWER / SAIL (Hollow and Ghostly) -->
     <g>
-      <rect x="315" y="80" width="80" height="52" fill="#1e293b" />
-      <rect x="325" y="74" width="60" height="6" fill="#334155" />
-      <rect x="385" y="86" width="20" height="46" fill="#1e293b" />
-      <rect x="395" y="96" width="15" height="36" fill="#1e293b" />
+      <rect x="315" y="80" width="80" height="52" fill="#0f261d" />
+      <rect x="325" y="74" width="60" height="6" fill="#14362a" />
+      <rect x="385" y="86" width="20" height="46" fill="#0f261d" />
+      <rect x="395" y="96" width="15" height="36" fill="#0f261d" />
 
-      <!-- Amber Glow from Command Bridge Window -->
-      <rect x="378" y="84" width="6" height="4" fill="#f59e0b" />
-      <rect x="386" y="84" width="6" height="4" fill="#f59e0b" />
-      <rect x="394" y="84" width="6" height="4" fill="#f59e0b" />
+      <!-- Hollow Green Glow from Windows -->
+      <rect x="378" y="84" width="6" height="4" fill="#34d399" />
+      <rect x="386" y="84" width="6" height="4" fill="#34d399" />
+      <rect x="394" y="84" width="6" height="4" fill="#34d399" />
 
-      <!-- Periscopes -->
-      <rect x="335" y="52" width="4" height="22" fill="#0f172a" />
-      <rect x="345" y="40" width="4" height="34" fill="#334155" />
-      <rect x="343" y="38" width="8" height="4" fill="#818cf8" />
-      <rect x="360" y="48" width="4" height="26" fill="#0f172a" />
+      <!-- Broken/Overgrown Periscopes -->
+      <rect x="335" y="52" width="4" height="22" fill="#01140d" />
+      <rect x="345" y="40" width="4" height="34" fill="#022c22" />
+      <rect x="343" y="38" width="8" height="4" fill="#10b981" />
+      <rect x="360" y="48" width="4" height="26" fill="#01140d" />
 
-      <!-- CHILL CAPTAIN WITH COFFEE MUG and STEAM -->
-      <g transform="translate(366, 60)">
-        <rect x="0" y="0" width="14" height="4" fill="#020617" />
-        <rect x="2" y="-2" width="10" height="3" fill="#ffffff" />
-        <rect x="-2" y="2" width="18" height="2" fill="#ca8a04" />
-        <rect x="2" y="4" width="10" height="6" fill="#fed7aa" />
-        <!-- Headphone Band over Ears -->
-        <rect x="1" y="2" width="12" height="2" fill="#2dd4bf" />
-        <rect x="0" y="4" width="3" height="4" fill="#2dd4bf" />
-        <!-- Coffee Mug -->
-        <rect x="11" y="8" width="5" height="6" fill="#ffffff" />
-        <rect x="12" y="7" width="3" height="2" fill="#78350f" /> <!-- Coffee -->
-        <rect x="16" y="9" width="2" height="4" fill="#ffffff" />
-        <!-- Rising Steam -->
-        <g class="steam">
-          <rect x="12" y="3" width="2" height="3" fill="#e0e7ff" />
-        </g>
-        <rect x="0" y="10" width="14" height="6" fill="#020617" />
-      </g>
+      <!-- Seaweed Overgrowth Hanging from Sail -->
+      <rect x="330" y="78" width="3" height="18" fill="#10b981" />
+      <rect x="332" y="94" width="3" height="12" fill="#047857" />
 
-      <!-- Subdued Star Emblem -->
+      <!-- Faded Ghostly Star -->
       <g transform="translate(345, 96)">
-        <rect x="3" y="0" width="3" height="1" fill="#831843" />
-        <rect x="1" y="1" width="7" height="2" fill="#831843" />
-        <rect x="0" y="3" width="9" height="2" fill="#831843" />
-        <rect x="2" y="5" width="5" height="2" fill="#831843" />
-        <rect x="1" y="7" width="2" height="2" fill="#831843" />
-        <rect x="6" y="7" width="2" height="2" fill="#831843" />
+        <rect x="3" y="0" width="3" height="1" fill="#047857" />
+        <rect x="1" y="1" width="7" height="2" fill="#047857" />
+        <rect x="0" y="3" width="9" height="2" fill="#047857" />
+        <rect x="2" y="5" width="5" height="2" fill="#047857" />
+        <rect x="1" y="7" width="2" height="2" fill="#047857" />
+        <rect x="6" y="7" width="2" height="2" fill="#047857" />
       </g>
 
-      <text x="325" y="122" font-family="ui-monospace, monospace" font-weight="bold" font-size="8" fill="#64748b">TK-208</text>
+      <text x="325" y="122" font-family="ui-monospace, monospace" font-weight="bold" font-size="8" fill="#34d399">TK-208</text>
     </g>
 
     <!-- Anechoic Hull Panels -->
-    <g fill="#020617">
+    <g fill="#01140d">
       <rect x="230" y="146" width="2" height="94" /><rect x="305" y="146" width="2" height="94" />
       <rect x="430" y="146" width="2" height="94" /><rect x="510" y="146" width="2" height="94" />
       <rect x="590" y="146" width="2" height="94" />
     </g>
   </g>
 
-  <!-- TOP-LEFT BADGE (Generous width, perfectly contained) -->
+  <!-- TOP-LEFT BADGE (Generous width 280px, perfectly contained) -->
   <g transform="translate(20, 20)">
-    <rect x="0" y="0" width="280" height="34" fill="#020617" stroke="#6366f1" stroke-width="2" />
-    <rect x="2" y="2" width="276" height="30" fill="#0b0e24" />
+    <rect x="0" y="0" width="280" height="34" fill="#01140d" stroke="#047857" stroke-width="2" />
+    <rect x="2" y="2" width="276" height="30" fill="#022c22" />
     <text x="140" y="15" text-anchor="middle" class="px-title">RED OCTOBER // TYPHOON</text>
-    <text x="140" y="27" text-anchor="middle" class="px-sub">STATUS: <tspan class="px-cyan">SILENT RUNNING</tspan></text>
+    <text x="140" y="27" text-anchor="middle" class="px-sub">STATUS: <tspan class="px-white">SUNK (GHOST WRECK)</tspan></text>
   </g>
 
-  <!-- BOTTOM-LEFT STATUS BOX (Generous width 350px, text 100% inside) -->
+  <!-- BOTTOM-LEFT COMMIT STATUS BOX (Generous width 360px, text 100% inside) -->
   <g transform="translate(20, 345)">
-    <rect x="0" y="0" width="350" height="32" fill="#020617" stroke="#6366f1" stroke-width="2" />
-    <rect x="2" y="2" width="346" height="28" fill="#0b0e24" />
-    <circle cx="16" cy="16" r="4" fill="#818cf8" />
-    <text x="30" y="20" class="px-text" font-size="10px">COMMITS: <tspan class="px-cyan">CHILL</tspan> [NO PUSH &gt; 24H]</text>
+    <rect x="0" y="0" width="360" height="32" fill="#01140d" stroke="#047857" stroke-width="2" />
+    <rect x="2" y="2" width="356" height="28" fill="#022c22" />
+    <circle cx="16" cy="16" r="4" fill="#f87171" />
+    <text x="30" y="20" class="px-text" font-size="10px">COMMITS: <tspan class="px-sub">DORMANT</tspan> [NO PUSH &gt; 3 DAYS]</text>
   </g>
 </svg>
